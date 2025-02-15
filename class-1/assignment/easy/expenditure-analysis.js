@@ -14,23 +14,25 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-    totalSpent = 0;
-    const enteries = Object.entries(transactions)
-    console.log(enteries)
-    for(let i; i<enteries.length; i++){
-        console.log(i)
-        // if(key == "price"){
-        //     console.log("inside price")
-        //     totalSpent += transactions[key]
-        // }
-        // console.log(totalSpent)
-    }
-
-    // return [];
+    const categoryMap = {};
+    
+    transactions.forEach(transaction => {
+      if (categoryMap[transaction.category]) {
+        categoryMap[transaction.category] += transaction.price;
+      } else {
+        categoryMap[transaction.category] = transaction.price;
+      }
+    });
+    
+    return Object.keys(categoryMap).map(category => ({
+      category: category,
+      totalSpent: categoryMap[category]
+    }));
   }
+  
+//   module.exports = calculateTotalSpentByCategory;
 
-
-  calculateTotalSpentByCategory([
+  const result = calculateTotalSpentByCategory([
     {
         id: 1,
         timestamp: 1656076800000,
@@ -61,4 +63,5 @@ function calculateTotalSpentByCategory(transactions) {
     },
 ])
   
-//   module.exports = calculateTotalSpentByCategory;
+
+console.log(result);
