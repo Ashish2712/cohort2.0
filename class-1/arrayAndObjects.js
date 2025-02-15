@@ -64,12 +64,23 @@ function calculateArithmetic(a, b, arithmeticFinalFunction) {
   return ans;
 }
 
-function sum(a, b) {
-  return a + b;
+function sum() {
+  console.log(10 + 20);
 }
+
+setTimeout(sum, 1 * 2000);
 
 console.log(calculateArithmetic(1, 2, sum));
 
-setTimeout(() => {
-  console.log(10+20);
-}, 3000);
+
+const counter = () => {
+  const count = 0;
+  for (let i = 30; i >= 0; i--) {
+    console.log(i);
+  }
+};
+
+
+
+
+
